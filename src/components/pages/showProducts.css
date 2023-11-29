@@ -1,13 +1,14 @@
 .container{
-    margin-top: 20px;
+    margin-top: 80px;
     background-color: #011F26;
     display: flex;
     flex-wrap: wrap;
+    flex-direction: row;
     justify-content: space-between;
     height: auto;
     padding: 10px;
     width: auto;
-
+    z-index: 0;
 }
 
 .product-container{
@@ -27,9 +28,80 @@
     
 }
 
+
+
+.containercolumn{
+
+    margin: 80px auto;
+    background-color: #011F26;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: space-between;
+    height: auto;
+    padding: 10px;
+    width: 1500px;
+
+}
+.product-containercolumn{
+
+    border: 5px solid pink;
+    background-color:   #025E73;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    width: 1300px;
+    margin: 20px auto;
+    border-radius: 10px;
+    color: black;
+    font-weight: bold;
+    height: auto;
+    text-align: center;
+  
+  
+    font-weight: bold;
+}
+
+h3, h2, p {
+    font-size: 40px;
+}
+
 .img{
     margin: 10px 10px 10px 10px;
     width: 240px;
     height: 180px;
     border-radius: 10px;
+}
+
+.buttonColumn, .buttonRow {
+    width: 80px;
+    height: 45px;
+    margin: 12px;   
+
+}
+
+.buttonRow {
+    background-image: url(/public/row.png);
+    background-size: cover;
+    border: 5px solid #03A688;
+    background-color: #03A688;
+}
+
+.buttonColumn{
+    background-image: url(/public/column.png);
+    background-size: cover;
+    border: 5px solid #03A688;
+    background-color: #03A688;
+}
+
+.container--buttons {
+    background-color: #011F26;
+    width: 140px;
+    display: flex;
+    position: absolute;
+    top: 20px; /* Ajusta la posición verticalmente */
+    left: 50%; /* Ajusta la posición horizontalmente */
+    transform: translate(-50%, 150%); /* Centra el contenedor horizontalmente */
+    z-index: 1; /* Asegura que esté por encima del .container */
+    margin: 10px;
+
 }
