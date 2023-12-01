@@ -1,15 +1,24 @@
 import React from 'react';
-import SearchComponent from './components/pages/searchComponent';
-import ShowProducts from './components/pages/showProducts';
+import Indexpage from './components/pages/Indexpage';
+import AddProductform from './components/pages/addProductform';
+import {
+  browserRouter as Router,
+  Route,
+  Routes,
+  BrowserRouter
+} from "react-router-dom";
+
 
 function App() {
   return (
     <div>
-      <SearchComponent />
 
-      
-      <ShowProducts></ShowProducts>
-      
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element= {<Indexpage />} />
+          <Route path="/addProduct" element= {<AddProductform />}/>
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }

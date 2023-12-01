@@ -1,5 +1,6 @@
 import React from 'react'
 import './searchComponent.css'
+
 const searchComponent = () => {
   return (
 

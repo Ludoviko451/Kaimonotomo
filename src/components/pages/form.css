@@ -1,0 +1,70 @@
+@import 'variables.css';
+
+.form--container {
+    background-color: var(--blue);
+    border: 6px solid var(--pink-color);
+    border-radius: 20px;
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    width: auto;
+    max-width: 800px;
+    height: auto;
+    margin: 20px auto;
+    align-items: center;
+ 
+
+}
+
+.form--title{
+    font-weight: bold;
+    margin: 50px;
+    display: block;
+}
+
+
+.form--nameinput, .form--priceinput, .form--featuresinput {
+    border: 5px solid gray;
+    background-color: rgb(227, 227, 227);
+    border-radius: 100px;
+    margin: 50px;
+    height: 75px;
+    width: 500px;
+    
+}
+
+label{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.form--photoinput {
+    display: none;
+}
+.file {
+    background-color: var(--pink-color);
+    color: transparent;
+    width: 300px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    border: 5px solid black;
+    border-radius: 50px;
+    visibility: none;
+    font-size: 50px;
+}
+
+.form--submitinput{
+    
+    margin: 100px;
+    background-color: var(--pink-color);
+    width: 300px;
+    font-size: 50px;
+    height: 75px;
+    border: 5px solid black;
+    border-radius: 50px;
+
+}
