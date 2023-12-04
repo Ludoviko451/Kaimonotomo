@@ -2,6 +2,11 @@ import React from 'react'
 import './searchComponent.css'
 
 const searchComponent = () => {
+
+  const redireccionarLogin = () => {
+
+    window.location.href = "/login"
+  }
   return (
 
     <header>
@@ -12,7 +17,7 @@ const searchComponent = () => {
             <button class="search-button">Buscar</button>
         </div>
         <div className='container--imagen'>
-        <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/c92e6091-cb14-4592-8436-d43333f112e7?apiKey=65389d7fce93477e9980a2b2c102c353&" className="img-4" />
+        <img loading="lazy" onClick={redireccionarLogin} src="https://cdn.builder.io/api/v1/image/assets/TEMP/c92e6091-cb14-4592-8436-d43333f112e7?apiKey=65389d7fce93477e9980a2b2c102c353&" className="img-4" />
         </div>
     </div>
     </header>

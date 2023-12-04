@@ -1,0 +1,122 @@
+@import './pages/variables.css';
+
+
+.container{
+    margin-top: 80px;
+    background-color: #011F26;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-between;
+    height: auto;
+    padding: 10px;
+    max-width: 1600px;
+    width: auto;
+    z-index: 0;
+}
+
+.plus {
+    font-weight: bold;
+    grid-column: 2;
+    font-size: 400px;
+    color: white;
+
+}
+.userproduct-container{
+
+    border: 5px solid var(--pink-color);
+    background-color:   #025E73;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr ;
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: auto;
+    width: 500px;
+    border-radius: 10px;
+    color: black;
+    font-weight: bold;
+    text-align: start;
+
+    height: auto;
+    max-height: 600px;
+    
+}
+
+.product-image{
+    width: 200px;
+    height: 200px;
+    grid-column: span 2;
+    grid-row: 3;
+    margin: 10px;
+    border: 5px solid black;
+}
+
+.product-name{
+    grid-column: span 2;
+    grid-row: 1;
+    margin: 20px;
+}
+
+.product-description{
+    grid-column: span 2;
+    grid-row: 2;
+    margin: 20px;
+    overflow: auto;
+
+}
+
+.product-price{
+    margin: 20px;
+    grid-column: 3;
+    grid-row: 2;
+}
+
+
+.containertitle{
+    background-color: gray;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    width: auto;
+    max-width: 600px;
+    margin: 0 auto;
+    
+}
+
+.cerrarsesion{
+    background-color: red;
+    border: 10px solid black;
+    width: 100px;
+    border-radius: 10px;
+}
+
+.deleteButton{
+
+    width: 100px;
+    height: 50px;
+    border-radius: 20px;
+    border: 4px solid black;
+    background-color: red;
+    
+}
+
+.updateButton{
+
+    margin-bottom: 20px;
+    width: 100px;
+    height: 50px;
+    border-radius: 20px;
+    border: 4px solid black;
+    background-color: goldenrod;
+    margin-top: 50px;
+}
+
+.button-container{
+    grid-column: 3;
+    grid-row: 3;
+}
