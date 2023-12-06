@@ -5,30 +5,16 @@ import { useEffect } from 'react';
 const ShowProducts = () => {
   const [products, setProducts] = useState([]);
   const [layout, setLayout] = useState(''); // Estado para el diseño actual
-  const [productsWithStores, setProductsWithStores] = useState([]);
+  const [storeProduct, setStoreProducts] = useState([]);
 
   useEffect(() => {
-    // Realiza la solicitud a la API para obtener los datos de las tiendas y los productos
-    fetch('http://localhost:8080/api/v1/users')
-      .then(response => response.json())
-      .then(data => {
-        // Mapea cada tienda y sus productos correspondientes
-        const productsMappedWithStores = data.reduce((acc, store) => {
-          if (store.productos) {
-            const productsWithStoreInfo = store.productos.map(product => ({
-              ...product,
-              vendidoPor: store.nombre, // Agrega el nombre de la tienda como "vendido por"
-            }));
-            return [...acc, ...productsWithStoreInfo];
-          }
-          return acc;
-        }, []);
-        setProductsWithStores(productsMappedWithStores);
-      })
-      .catch(error => {
-        console.error('Error fetching data:', error);
-      });
-  }, []);
+
+      fetch(`http://localhost:8080/api/v1/products`) // Reemplaza con la URL de tu API
+        .then(response => response.json())
+        .then(data => setStoreProducts(data))
+        .catch(error => console.error('Error fetching data:', error));
+    
+  },[])
 
   const row = () => {
     setLayout(''); // Cambia al diseño en fila
@@ -86,16 +72,18 @@ const ShowProducts = () => {
           
         </article>
 
-        {productsWithStores.map(product => (
+
+        {storeProduct.map(product => (
           <article className={`product-container${layout}`} key={product.id}>
             <img src={product.imagen} className='img' alt={product.nombre} />
             <h3>{product.nombre}</h3>
             <p>Desde:</p>             
             <h2>${product.precio}</h2>
-            <p>Vendido por: {product.vendidoPor}</p>    
+
 
           </article>
         ))}
+        
         {products.map((product) => (
           <article className={`product-container${layout}`} key={product.id}>
             <img src={product.image} className='img' alt={product.title} />
@@ -106,6 +94,8 @@ const ShowProducts = () => {
           
           </article>
         ))}
+
+
 
       </section>
     </div>

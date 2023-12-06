@@ -3,6 +3,7 @@ import './user.css';
 
 const UserProfile = () => {
   const [userData, setUserData] = useState(null);
+  const [products, setProducts] = useState([]);
 
   useEffect(() => {
     const storedUserData = localStorage.getItem('userData');
@@ -28,6 +29,15 @@ const UserProfile = () => {
     fetchData();
   }, []);
 
+  useEffect(() => {
+    if (userData && userData.id) {
+      fetch(`http://localhost:8080/api/v1/${userData.id}/products`) // Reemplaza con la URL de tu API
+        .then(response => response.json())
+        .then(data => setProducts(data))
+        .catch(error => console.error('Error fetching data:', error));
+    }
+  }, [userData])
+
   const handleLogout = () => {
     localStorage.removeItem('userData');
     window.location.reload();
@@ -47,7 +57,7 @@ const UserProfile = () => {
   }
 
   const deleteProduct = (id, idUser) => {
-    fetch(`http://localhost:8080/api/v1/users/${idUser}/products/${id}`, {
+    fetch(`http://localhost:8080/api/v1/${idUser}/products/${id}`, {
       method: 'DELETE',
     })
       .then((response) => {
@@ -56,11 +66,8 @@ const UserProfile = () => {
         }
         console.log(`El producto con ID ${id} ha sido eliminado correctamente`);
         // Actualizar el estado local después de eliminar el producto
-        const updatedProducts = userData.productos.filter((producto) => producto.id !== id);
-        setUserData({
-          ...userData,
-          productos: updatedProducts,
-        });
+        const updatedProducts = products.filter((producto) => producto.id !== id);
+        setProducts(updatedProducts);
       })
       .catch((error) => {
         console.error('Hubo un problema al eliminar el producto:', error);
@@ -82,8 +89,8 @@ const UserProfile = () => {
             <article className='userproduct-container' onClick={addProduct}>
               <h1 className='plus'>+</h1>
             </article>
-            {userData.productos && userData.productos.length > 0 ? (
-              userData.productos.map((producto) => (
+            {products && products.length > 0 ? (
+              products.map((producto) => (
                 <article className='userproduct-container' key={producto.id}>
                   <h2 className='product-name'>{producto.nombre}</h2>
                   <h3 className='product-price'>{producto.precio}$</h3>

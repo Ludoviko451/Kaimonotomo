@@ -37,7 +37,7 @@ const UpdateProduct = () => {
         updatedFormData.imagen = formData.imagen;
       }
 
-      const response = await fetch(`http://localhost:8080/api/v1/users/${userId}/products/${productId}`, {
+      const response = await fetch(`http://localhost:8080/api/v1/${userId}/products/${productId}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',

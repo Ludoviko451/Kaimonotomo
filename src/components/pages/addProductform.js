@@ -20,7 +20,7 @@ const AddProductform = () => {
     e.preventDefault();
 
     try {
-      const response = await fetch(`http://localhost:8080/api/v1/users/${userId}/addProduct`, {
+      const response = await fetch(`http://localhost:8080/api/v1/${userId}/products`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
