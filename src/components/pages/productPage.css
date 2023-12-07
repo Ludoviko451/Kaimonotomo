@@ -1,0 +1,81 @@
+@import 'variables.css';
+
+.product--container{
+    display: grid;
+    grid-template-areas: 
+    'image image name name'
+    'image image description description'
+    'image image price price';
+    background-color: var(--blue);
+    color: white;
+    margin: 20px;
+    width: auto;
+    max-width: 2500px;
+    height: 1000px;
+    margin: 20px auto;
+    border-radius: 100px;
+}
+
+.product--image{
+    grid-area: image;
+    width: 500px;
+    height: 500px;
+    border-radius: 20px;
+    border: 5px solid ;
+    margin: 100px;
+}
+
+.product--name{
+    grid-area: name;
+}
+
+.product--description{
+    grid-area: description;
+}
+
+.product--price{
+    grid-area: price;
+}
+
+.shop--container{
+    background-color: var(--blue);
+    color: white;
+    margin: 20px;
+    width: auto;
+    max-width: 2500px;
+    height: 1000px;
+    margin: 20px auto;
+    border-radius: 100px;
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+
+}
+
+.shop--item {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Tres columnas iguales */
+    gap: 10px; /* Espaciado entre elementos */
+    background-color: var(--blue);
+    border: 5px solid black;
+    margin: 10px;
+    color: white;
+    max-width: 1200px;
+    margin: 10px auto;
+    padding: 10px;
+  }
+  
+  .container--storename,
+  .container--storeaddress,
+  .container--storeprice {
+    border: 5px solid black;
+    padding: 10px;
+    text-align: center;
+    background-color: var(--green);
+  }
+  
+.textstore{
+    text-align: center;
+    font-weight: bold;
+    color: wheat;
+}

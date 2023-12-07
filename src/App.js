@@ -5,6 +5,7 @@ import AddTiendaform from './components/pages/addTiendaform';
 import Login from './components/pages/login';
 import UserProfile from './components/userProfile';
 import UpdateProduct from './components/pages/updateProduct';
+import ProductPage from './components/pages/productPage';
 import {
   browserRouter as Router,
   Route,
@@ -26,6 +27,9 @@ function App() {
           <Route path="/addTienda" element= {<AddTiendaform />}/>
           <Route path="/login" element= {<Login />}/>
           <Route path="/user" element= {<UserProfile />}/>
+          <Route path="/productPage" element= {<ProductPage />}/>
+
+
         </Routes>
       </BrowserRouter>
     </div>

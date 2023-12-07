@@ -56,7 +56,9 @@ const UserProfile = () => {
 
   }
 
-  const deleteProduct = (id, idUser) => {
+  const deleteProduct = (id, idUser, nombreProducto) => {
+
+    if (window.confirm(`Esta seguro que desea eliminar el producto ${id}: ${nombreProducto}`)){
     fetch(`http://localhost:8080/api/v1/${idUser}/products/${id}`, {
       method: 'DELETE',
     })
@@ -72,7 +74,11 @@ const UserProfile = () => {
       .catch((error) => {
         console.error('Hubo un problema al eliminar el producto:', error);
       });
-  };
+  }
+  else {
+    alert("Se cancelo la eliminacion del producto")
+  }
+}
 
   return (
     <div>
@@ -97,7 +103,7 @@ const UserProfile = () => {
                   <h3 className='product-description'>{producto.descripcion}</h3>
                   <img className="product-image" src={producto.imagen} alt={producto.nombre} />
                   <div className='button-container'>
-                  <button className="deleteButton" onClick={() => deleteProduct(producto.id, userData.id)}>Eliminar</button>
+                  <button className="deleteButton" onClick={() => deleteProduct(producto.id, userData.id, producto.nombre)}>Eliminar</button>
                   <button className='updateButton' onClick={() => updateProduct(producto.id)}>Actualizar</button>
                   </div>
                 </article>

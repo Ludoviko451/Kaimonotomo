@@ -23,6 +23,10 @@
     color: white;
 
 }
+
+.plus:hover{
+    cursor: pointer;
+}
 .userproduct-container{
 
     border: 5px solid var(--pink-color);
