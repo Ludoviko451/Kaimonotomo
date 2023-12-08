@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import Select from 'react-select';
 import { Tooltip } from 'react-tooltip';
 import './searchComponent.css'
+
+import DropdownMenu from '../dropdownMenu';
 const SearchComponent = () => {
   const [selectedTags, setSelectedTags] = useState([]);
   const [searchText, setSearchText] = useState('');
@@ -53,7 +55,7 @@ const SearchComponent = () => {
     <header>
       <div className='search-bar'>
         <div className='container--searchbar'>
-        <img loading="lazy" srcset="https://cdn.builder.io/api/v1/image/assets/TEMP/c060c197-bf0b-4711-a04f-2fd8e55355fe?apiKey=65389d7fce93477e9980a2b2c102c353&width=100 100w, https://cdn.builder.io/api/v1/image/assets/TEMP/c060c197-bf0b-4711-a04f-2fd8e55355fe?apiKey=65389d7fce93477e9980a2b2c102c353&width=200 200w, https://cdn.builder.io/api/v1/image/assets/TEMP/c060c197-bf0b-4711-a04f-2fd8e55355fe?apiKey=65389d7fce93477e9980a2b2c102c353&width=400 400w, https://cdn.builder.io/api/v1/image/assets/TEMP/c060c197-bf0b-4711-a04f-2fd8e55355fe?apiKey=65389d7fce93477e9980a2b2c102c353&width=800 800w, https://cdn.builder.io/api/v1/image/assets/TEMP/c060c197-bf0b-4711-a04f-2fd8e55355fe?apiKey=65389d7fce93477e9980a2b2c102c353&width=1200 1200w, https://cdn.builder.io/api/v1/image/assets/TEMP/c060c197-bf0b-4711-a04f-2fd8e55355fe?apiKey=65389d7fce93477e9980a2b2c102c353&width=1600 1600w, https://cdn.builder.io/api/v1/image/assets/TEMP/c060c197-bf0b-4711-a04f-2fd8e55355fe?apiKey=65389d7fce93477e9980a2b2c102c353&width=2000 2000w, https://cdn.builder.io/api/v1/image/assets/TEMP/c060c197-bf0b-4711-a04f-2fd8e55355fe?apiKey=65389d7fce93477e9980a2b2c102c353& "className="img-2" />
+        <img loading="lazy" src= './kaimonotomoicon.png'className="img-2" />
 
         </div>
 
@@ -77,8 +79,12 @@ const SearchComponent = () => {
             <span>Haz clic para buscar esta etiqueta</span>
           </Tooltip>
         </div>
+    
+        
         <div className='container--imagen'>
-          <img loading="lazy" onClick={redireccionarLogin} src="https://cdn.builder.io/api/v1/image/assets/TEMP/c92e6091-cb14-4592-8436-d43333f112e7?apiKey=65389d7fce93477e9980a2b2c102c353&" className="img-4" />
+        
+        <DropdownMenu></DropdownMenu>
+
         </div>
       </div>
     </header>

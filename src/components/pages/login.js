@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import './form.css';
-
+import { useEffect } from 'react';
 const Login = () => {
   const [id, setId] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
@@ -35,6 +35,14 @@ const Login = () => {
     window.location.href = "/addTienda"
   }
 
+  useEffect(() => {
+    const userData = localStorage.getItem('userData');
+    if (userData) {
+      // Si hay datos de usuario en el almacenamiento local, redirige a la página de usuario
+      window.location.href = '/user';
+    }
+  }, []);
+  
   return (
     <div>
       {errorMessage && <div className="message">{errorMessage}</div>}

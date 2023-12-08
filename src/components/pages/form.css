@@ -23,7 +23,7 @@
 }
 
 
-.form--nameinput, .form--priceinput, .form--featuresinput, .form--idinput {
+.form--nameinput, .form--priceinput, .form--idinput {
     border: 5px solid gray;
     background-color: rgb(227, 227, 227);
     border-radius: 100px;
@@ -95,4 +95,17 @@ label{
     
     border: 5px solid black;
     border-radius: 50px;
+}
+
+.form--featuresinput{
+    border: 5px solid gray;
+    background-color: rgb(227, 227, 227);
+    margin: 50px;
+    border-radius: 100px;
+    padding: 20px;
+    height: 150px;
+    width: 500px;
+    font-weight: bold;
+    font-size: 20px;
+    
 }

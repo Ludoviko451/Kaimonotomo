@@ -63,6 +63,7 @@ const ProductPage = () => {
       
       const showStore = (storeId) => {
         console.log(storeId)
+        window.location.href = `/storePage?storeId=${storeId}`
       }
       
 
@@ -76,7 +77,7 @@ const ProductPage = () => {
                 <img src={product.imagen} className='product--image' alt="Producto" />
                 <p className='product--name'>Nombre del producto: {product.nombre}</p>
                 <p className='product--description'>Descripcion del producto: {product.descripcion}</p>
-                <p className='product--price'>Precio más barato: {product.precio}$</p>
+                <p className='product--price'>Precio: {product.precio}$</p>
               </div>
             </div>
           ) : (
@@ -87,8 +88,8 @@ const ProductPage = () => {
           <div className='shops--container'>
         <p className='textstore'>Tiendas que venden este producto:</p>
         {tiendas.map((tienda, index) => (
-            <div key={index} className='shop--item'>
-            <div className='container--storename' onClick={() => showStore(tienda.id)}>
+            <div key={index} className='shop--item' onClick={() => showStore(tienda.id)}>
+            <div className='container--storename'> 
             <p className='store--name'>Nombre: {tienda.nombre}</p>
             </div>
             <div className='container--storeaddress'>

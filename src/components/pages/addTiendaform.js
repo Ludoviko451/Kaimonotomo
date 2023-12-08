@@ -6,6 +6,8 @@ const AddTiendaForm = () => {
     nombre: '',
     direccion: '',
     paginaWeb: '',
+    celular: '',
+    imagen: '',
   });
 
   const handleSubmit = async (e) => {
@@ -22,7 +24,9 @@ const AddTiendaForm = () => {
 
       if (response.ok) {
         console.log('Tienda creada exitosamente');
-        setFormData({ nombre: '', direccion: '', paginaWeb: '' });
+        alert("Tienda creada existosamente")
+        window.location.href = "/login"
+        setFormData({ nombre: '', direccion: '', paginaWeb: '', celular: '', imagen: ''});
       } else {
         console.error('Error al crear la tienda');
       }
@@ -73,6 +77,30 @@ const AddTiendaForm = () => {
               name='paginaWeb'
               className='form--featuresinput'
               value={formData.paginaWeb}
+              onChange={handleInputChange}
+              required
+            />
+          </label>
+
+          <label>
+            <h3>Numero de celular de la tienda</h3>
+            <input
+              type='text'
+              name='celular'
+              className='form--nameinput'
+              value={formData.celular}
+              onChange={handleInputChange}
+              required
+            />
+          </label>
+
+          <label>
+            <h3>Ingrese una imagen de la tienda</h3>
+            <input
+              type='text'
+              name='imagen'
+              className='form--featuresinput'
+              value={formData.imagen}
               onChange={handleInputChange}
               required
             />

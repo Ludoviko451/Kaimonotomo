@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import './user.css';
+import { Home } from '@mui/icons-material';
+import DeleteIcon from '@mui/icons-material/Delete';
+import UpdateIcon from '@mui/icons-material/Update';
 
 const UserProfile = () => {
   const [userData, setUserData] = useState(null);
@@ -80,9 +83,14 @@ const UserProfile = () => {
   }
 }
 
+const inicio = () => {
+  window.location.href = "/"
+}
+
   return (
     <div>
       <button className="cerrarsesion" onClick={handleLogout}>Cerrar Sesión</button>
+      <button className="botoninicio" onClick={inicio}> <Home sx={{fontSize: 60}}></Home></button>
       <div className='contenedor'></div>
       {userData ? (
         <div>
@@ -103,8 +111,8 @@ const UserProfile = () => {
                   <h3 className='product-description'>{producto.descripcion}</h3>
                   <img className="product-image" src={producto.imagen} alt={producto.nombre} />
                   <div className='button-container'>
-                  <button className="deleteButton" onClick={() => deleteProduct(producto.id, userData.id, producto.nombre)}>Eliminar</button>
-                  <button className='updateButton' onClick={() => updateProduct(producto.id)}>Actualizar</button>
+                  <button className="deleteButton" onClick={() => deleteProduct(producto.id, userData.id, producto.nombre)}><DeleteIcon sx={{fontSize: 50}} /></button>
+                  <button className='updateButton' onClick={() => updateProduct(producto.id)}><UpdateIcon sx={{fontSize: 50}} /></button>
                   </div>
                 </article>
               ))

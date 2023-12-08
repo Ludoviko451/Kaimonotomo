@@ -65,6 +65,7 @@ header{
     height: 100px;
     align-self: center;
     justify-self: center;
+
 }
 .img-2:hover{
     background-color: cadetblue;
@@ -75,6 +76,14 @@ header{
 .container--imagen{
     align-self: center;
     justify-self: center;
+    border-radius: 50px;
+    background-color: white;
+}
+
+.container--imagen:hover{
+    cursor: pointer;
+    background-color: gray;
+    transition: 1s;
 }
 
 .container--searchbar{

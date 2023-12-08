@@ -20,6 +20,10 @@ const ShowProducts = () => {
     setLayout(''); // Cambia al diseño en fila
   };
 
+  const showProduct = (idTienda, productId) => {
+    window.location.href = `/productPage?storeId=${idTienda}&productId=${productId}`
+  };
+
   const column = () => {
     setLayout('column'); // Cambia al diseño en columna
   };
@@ -74,7 +78,7 @@ const ShowProducts = () => {
 
 
         {storeProduct.map(product => (
-          <article className={`product-container${layout}`} key={product.id}>
+          <article className={`product-container${layout}`} key={product.id} onClick={() => {showProduct(product.idTienda, product.id)}}>
             <img src={product.imagen} className='img' alt={product.nombre} />
             <h3>{product.nombre}</h3>
             <p>Desde:</p>             

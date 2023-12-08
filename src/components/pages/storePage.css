@@ -1,0 +1,64 @@
+@import 'variables.css';
+
+
+.storecontainer{
+    display: grid;
+    background-color: var(--blue);
+    margin: 20px;
+    border-radius: 20px;
+    border: 5px solid black;
+    grid-template-areas: 
+    'image image storename storename'
+    'image image storeaddress storeaddress'
+    'image image storeinfo storeinfo';
+    gap: 100px;
+    font-weight: bold;
+}
+
+.storecontainer--img{
+    grid-area: image;
+    width: 300px;
+    height: 300px;
+    margin: 100px;
+    border: 5px solid var(--pink-color);
+    border-radius: 20px;
+
+}
+
+.storecontainer--name{
+    grid-area: storename;
+
+}
+
+.storecontainer--address{
+    grid-area: storeaddress;
+
+}
+
+.storecontainer--email{
+    grid-area: storeinfo;
+}
+
+.storeproducts{
+    display: flex;
+    background-color: var(--blue);
+    margin: 20px;
+    border-radius: 20px;
+    border: 5px solid black;
+}
+
+.imgproduct{
+    width: 300px;
+    height: 250px;
+    margin: 50px;
+    border-radius: 50px;
+    border: 5px solid var(--pink-color);
+}
+
+.itemproduct{
+    border: 5px solid black;
+    margin: 20px;
+    border-radius: 20px;
+    font-weight: bold;
+    color: black;
+}

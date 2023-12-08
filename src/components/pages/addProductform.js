@@ -82,8 +82,7 @@ const AddProductform = () => {
 
           <label>
             <h3>Caracteristicas del producto</h3>
-            <input
-              type='text'
+            <textarea
               className='form--featuresinput'
               required
               value={formData.descripcion}
