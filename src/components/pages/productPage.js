@@ -2,7 +2,7 @@ import React from 'react'
 
 import { useLocation } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-
+import SearchComponent from './searchComponent'
 import './productPage.css'
 const ProductPage = () => {
 
@@ -71,6 +71,9 @@ const ProductPage = () => {
     return (
 
         <div>
+        <div>
+          <SearchComponent></SearchComponent>
+        </div>
           {product ? (
             <div>
               <div className='product--container'>

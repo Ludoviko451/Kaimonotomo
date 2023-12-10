@@ -30,6 +30,9 @@
     height: auto;
     
 }
+.product-container:hover{
+    cursor: pointer;
+}
 
 
 
@@ -64,6 +67,10 @@
     font-weight: bold;
 }
 
+.product-containercolumn:hover{
+    cursor: pointer;
+}
+
 h3, h2, p {
     font-size: 40px;
 }
@@ -75,10 +82,10 @@ h3, h2, p {
     border-radius: 10px;
 }
 
-.buttonColumn, .buttonRow {
+.buttonColumn, .buttonRow , .buttonSort{
     width: 80px;
-    height: 45px;
-    margin: 12px;   
+    height: 55px;
+    margin: 10px;   
 
 }
 
@@ -96,9 +103,16 @@ h3, h2, p {
     background-color: #03A688;
 }
 
+.buttonSort{
+    border: 5px solid #03A688;
+    background-color: #03A688;
+    background-size: cover;
+}
+
 .container--buttons {
     background-color: #011F26;
-    width: 140px;
+    width: 240px;
+    height: auto;
     display: flex;
     position: absolute;
     top: 20px; /* Ajusta la posición verticalmente */
@@ -106,6 +120,9 @@ h3, h2, p {
     transform: translate(-50%, 150%); /* Centra el contenedor horizontalmente */
     z-index: 1; /* Asegura que esté por encima del .container */
     margin-top: 80px;
+    background-size: contain;
+    
+    
 }
 
 .contenedor--perfil{

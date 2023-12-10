@@ -14,6 +14,7 @@
     height: 1000px;
     margin: 20px auto;
     border-radius: 100px;
+    border: 5px solid var(--pink-color);
 }
 
 .product--image{
@@ -64,6 +65,10 @@
     margin: 10px auto;
     padding: 10px;
   }
+
+.shop--item:hover{
+    cursor: pointer;
+}
   
   .container--storename,
   .container--storeaddress,

@@ -25,15 +25,17 @@ const UpdateProduct = () => {
         const response = await fetch(`http://localhost:8080/api/v1/${userId}/products/${productId}`);
         if (response.ok) {
           const productData = await response.json();
+  
+          // Formatear las etiquetas del producto al formato esperado por react-select
+          const formattedTags = productData.etiquetas.map(tag => ({
+            value: tag,
+            label: tag,
+          }));
+  
           setFormData({
-            nombre: productData.nombre,
-            precio: productData.precio,
-            imagen: productData.imagen,
-            descripcion: productData.descripcion,
-            etiquetas: productData.etiquetas // Establecer las etiquetas existentes
+            // ... otras propiedades del producto
+            etiquetas: formattedTags, // Establecer las etiquetas formateadas
           });
-
-          console.log(productData)
         } else {
           setErrorMessage('No se pudo obtener la información del producto');
         }
@@ -44,6 +46,7 @@ const UpdateProduct = () => {
     
     getProductInfo();
   }, []);
+  
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -51,9 +54,16 @@ const UpdateProduct = () => {
   };
 
   const handleTagChange = (selectedOptions) => {
-    const formattedTags = selectedOptions.map(tag => ({ value: tag, label: tag }));
+    // Formatear las etiquetas seleccionadas al formato esperado por react-select
+    const formattedTags = selectedOptions.map(tag => ({
+      value: tag.value,
+      label: tag.label,
+    }));
+  
+    // Actualizar el estado con las etiquetas formateadas
     setFormData({ ...formData, etiquetas: formattedTags || [] });
   };
+  
   
 
   const handleSubmit = async (e) => {

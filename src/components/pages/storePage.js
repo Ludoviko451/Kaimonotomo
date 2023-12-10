@@ -2,6 +2,7 @@ import React from 'react'
 import './storePage.css'
 import { useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom'
+import SearchComponent from './searchComponent'
 const StorePage = () => {
 
     const [tienda, setTienda] = useState(null)
@@ -48,6 +49,9 @@ const StorePage = () => {
 
   return (
     <div>
+        <div>
+          <SearchComponent></SearchComponent>
+        </div>
         <div>
         {tienda ? (
             <div className='storecontainer'>
