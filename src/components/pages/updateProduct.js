@@ -1,57 +1,88 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './form.css';
 import { useLocation } from 'react-router-dom';
+import TagsBar from './tagsBar'; // Asegúrate de importar el componente TagsBar
 
 const UpdateProduct = () => {
   const [successMessage, setSuccessMessage] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
-
   const [formData, setFormData] = useState({
     nombre: '',
     precio: '',
     imagen: '',
-    descripcion: ''
+    descripcion: '',
+    etiquetas: [] // Campo para almacenar las etiquetas seleccionadas
   });
 
   const location = useLocation();
   const userId = new URLSearchParams(location.search).get('userId');
   const productId = new URLSearchParams(location.search).get('productId');
 
+  // Función para obtener la información del producto para su actualización
+  useEffect(() => {
+    const getProductInfo = async () => {
+      try {
+        const response = await fetch(`http://localhost:8080/api/v1/${userId}/products/${productId}`);
+        if (response.ok) {
+          const productData = await response.json();
+          setFormData({
+            nombre: productData.nombre,
+            precio: productData.precio,
+            imagen: productData.imagen,
+            descripcion: productData.descripcion,
+            etiquetas: productData.etiquetas // Establecer las etiquetas existentes
+          });
+
+          console.log(productData)
+        } else {
+          setErrorMessage('No se pudo obtener la información del producto');
+        }
+      } catch (error) {
+        setErrorMessage('Error al obtener la información del producto');
+      }
+    };
+    
+    getProductInfo();
+  }, []);
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
+  const handleTagChange = (selectedOptions) => {
+    const formattedTags = selectedOptions.map(tag => ({ value: tag, label: tag }));
+    setFormData({ ...formData, etiquetas: formattedTags || [] });
+  };
+  
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+  
     try {
-      const updatedFormData = {};
-
-      // Verificar y agregar los campos que tienen valores
-      if (formData.nombre.trim() !== '') {
-        updatedFormData.nombre = formData.nombre;
-      }
-      if (formData.precio.trim() !== '') {
-        updatedFormData.precio = formData.precio;
-      }
-      if (formData.descripcion.trim() !== '') {
-        updatedFormData.descripcion = formData.descripcion;
-      }
-      if (formData.imagen.trim() !== '') {
-        updatedFormData.imagen = formData.imagen;
-      }
-
+      const productData = {
+        nombre: formData.nombre,
+        precio: formData.precio,
+        imagen: formData.imagen,
+        descripcion: formData.descripcion,
+        etiquetas: formData.etiquetas.map(tag => tag.value) // Obtener solo los valores de las etiquetas
+      };
+  
       const response = await fetch(`http://localhost:8080/api/v1/${userId}/products/${productId}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(updatedFormData),
+        body: JSON.stringify(productData),
       });
-
+  
       if (response.ok) {
         setSuccessMessage('Producto actualizado satisfactoriamente');
-        setFormData({ nombre: '', precio: '', imagen: '', descripcion: '' });
         setErrorMessage('');
+        // Redireccionar a la página de usuario después de la actualización exitosa
         window.location.href = "/user";
       } else {
-        setErrorMessage('Error al actualizar el objeto');
+        setErrorMessage('Error al actualizar el producto');
         setSuccessMessage('');
       }
     } catch (error) {
@@ -60,16 +91,11 @@ const UpdateProduct = () => {
     }
   };
 
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
-  };
-
   return (
     <div>
       {successMessage && <div className="message">{successMessage}</div>}
       {errorMessage && <div className="message">{errorMessage}</div>}
-      <form action="/api/tiendas" method="post" onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit}>
         <div className='form--container'>
           <h2 className='form--title'>ACTUALIZAR PRODUCTO</h2>
 
@@ -117,6 +143,12 @@ const UpdateProduct = () => {
             />
           </label>
 
+
+          <label>
+            <h3>Etiquetas del producto</h3>
+            {/* Utilizando el componente TagsBar */}
+            <TagsBar onTagChange={handleTagChange} selectedTags={formData.etiquetas} />
+          </label>
           <input type='submit' className='form--submitinput' required />
         </div>
       </form>

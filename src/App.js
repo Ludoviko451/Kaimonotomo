@@ -7,6 +7,7 @@ import UserProfile from './components/userProfile';
 import UpdateProduct from './components/pages/updateProduct';
 import ProductPage from './components/pages/productPage';
 import StorePage from './components/pages/storePage'
+import ProductsbyTag from './components/pages/productsbyTag';
 import {
   browserRouter as Router,
   Route,
@@ -30,6 +31,7 @@ function App() {
           <Route path="/user" element= {<UserProfile />}/>
           <Route path="/productPage" element= {<ProductPage />}/>
           <Route path="/storePage" element= {<StorePage />}/>
+          <Route path="/productsbyTags" element= {<ProductsbyTag />}/>
 
 
         </Routes>

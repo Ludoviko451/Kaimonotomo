@@ -1,36 +1,53 @@
 import React, { useState } from 'react';
 import './form.css';
 import { useLocation } from 'react-router-dom';
-
+import Select from 'react-select';
+import TagsBar from './tagsBar';
 const AddProductform = () => {
   const [successMessage, setSuccessMessage] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
-
   const [formData, setFormData] = useState({
     nombre: '',
     precio: '',
     imagen: '',
-    descripcion: ''
+    descripcion: '',
+    etiquetas: [] // Campo para almacenar las etiquetas seleccionadas
   });
 
   const location = useLocation();
   const userId = new URLSearchParams(location.search).get('userId');
 
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
+  const handleTagChange = (selectedOptions) => {
+    setFormData({ ...formData, etiquetas: selectedOptions || [] });
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
+      const productData = {
+        ...formData,
+        etiquetas: formData.etiquetas.map(tag => tag.value),
+      };
+
+      console.log(productData);
+
       const response = await fetch(`http://localhost:8080/api/v1/${userId}/products`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify(productData),
       });
 
       if (response.ok) {
         setSuccessMessage('Producto agregado satisfactoriamente');
-        setFormData({ nombre: '', precio: '', imagen: '', descripcion: ''});
+        setFormData({ nombre: '', precio: '', imagen: '', descripcion: '', etiquetas: [] });
         setErrorMessage('');
         window.location.href = "/user"
       } else {
@@ -43,10 +60,7 @@ const AddProductform = () => {
     }
   };
 
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
-  };
+
 
   return (
     <div>
@@ -56,6 +70,7 @@ const AddProductform = () => {
         <div className='form--container'>
           <h2 className='form--title'>AGREGAR PRODUCTO</h2>
 
+          {/* Resto de los campos del formulario */}
           <label>
             <h3>Nombre del producto</h3>
             <input
@@ -81,7 +96,7 @@ const AddProductform = () => {
           </label>
 
           <label>
-            <h3>Caracteristicas del producto</h3>
+            <h3>Características del producto</h3>
             <textarea
               className='form--featuresinput'
               required
@@ -102,6 +117,15 @@ const AddProductform = () => {
               name='imagen'
             />
           </label>
+
+
+            <label>
+            <h3>Etiquetas del producto</h3>
+            {/* Utilizando el componente TagsBar */}
+            <TagsBar onTagChange={handleTagChange} selectedTags={formData.tags} />
+          </label>
+
+        
 
           <input type='submit' className='form--submitinput' required />
         </div>
